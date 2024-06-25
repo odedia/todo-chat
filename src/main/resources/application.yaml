@@ -1,0 +1,20 @@
+spring:
+  threads:
+    virtual:
+      enabled: true
+  config:
+    import: "optional:classpath:/creds.yaml"
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+logging:
+  level:
+    org:
+      springframework:
+        ai: DEBUG

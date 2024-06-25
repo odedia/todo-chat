@@ -1,0 +1,24 @@
+apiVersion: "tanzu.vmware.com/v1"
+kind: SpringCloudGatewayRouteConfig
+metadata:
+  name: todo-chat-route-config
+spec:
+  routes:
+  - predicates:
+    - Path=/chat/**
+    filters:
+    - StripPrefix=1
+    tags:
+    - backend
+  service:
+    name: todo-chat
+---
+apiVersion: "tanzu.vmware.com/v1"
+kind: SpringCloudGatewayMapping
+metadata:
+  name: todo-chat-route-mapping
+spec:
+  gatewayRef:
+    name: spring-cloud-gateway
+  routeConfigRef:
+    name: todo-chat-route-config
